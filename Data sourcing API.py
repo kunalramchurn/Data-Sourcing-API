@@ -44,8 +44,12 @@ except requests.exceptions.RequestException as ExceptionsErr:
 #if-else statement to detect common errors
 if response.status_Code == 400:
     print('Bad Request')
+elif response.status_Code == 401:
+    print('Unauthorized')
+elif response.status_code == 403:
+    print('Forbidden')
 elif response.status_Code == 500:
-    print('Internal Server Error')
+    print('Internal Server Error')    
 else:
     print('StatusCode:' ,response.status_code,'Created')
     print('Headers:', response.headers["date"])
