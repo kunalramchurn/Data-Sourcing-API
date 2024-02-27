@@ -1,0 +1,9 @@
+import requests
+import json
+import pandas as pd
+
+r = requests.get('https://api.github.com/events')
+df= pd.DataFrame(r.json())
+df = df.explode('actor')
+
+pd.json_normalize(json.loads(df.to_json(orient="records")))
